@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Slider Logic using CSS Variables */
+.slider-container {
+  --active-index: 0;
+}
+
+.slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Mobile Default: 1 item visible */
+  transform: translateX(calc(var(--active-index) * -100%));
+}
+
+.slider-item {
+  flex: 0 0 100%; /* Mobile: full width */
+  padding: 0 1rem;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 768px) {
+  .slider-track {
+    /* Desktop: 3 items visible, centered */
+    /* 
+       We want center of item[active] to be at center of screen (50%).
+       Item width = 33.333%
+       Track shift = 50% - (active * 33.333% + 16.666%)
+                   = 33.333% - active * 33.333%
+                   = (1 - active) * 33.333%
+                   = (active * -33.333%) + 33.333%
+    */
+    transform: translateX(calc((var(--active-index) * -33.333%) + 33.333%));
+  }
+  
+  .slider-item {
+    flex: 0 0 33.333%;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Attreya Wellness & Healing Clinic",
+  "description": "A premium medical landing page for Attreya Wellness & Healing Clinic in Nagpur, specializing in Dermatology, ENT, Pain Therapy, and Ayurved & Panchakarma.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
